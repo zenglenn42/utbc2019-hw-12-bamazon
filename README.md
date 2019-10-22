@@ -19,7 +19,7 @@ Update
 
 Delete
 
-* Not implemented.  Note a requirement for this assignment.
+* Not implemented.  Not a requirement for this assignment.
 
 
 ## Technology stack
