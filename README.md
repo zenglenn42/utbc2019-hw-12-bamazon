@@ -4,6 +4,7 @@ Console-based version of Amazon :-)
 
 ## Here are the products Bamazon knows about ...
 
+```
 mysql> select * from products;
 +---------+---------------+-----------------+-------+----------------+
 | item_id | product_name  | department_name | price | stock_quantity |
@@ -19,6 +20,7 @@ mysql> select * from products;
 |       9 | computer      | electronics     | 10.00 |              9 |
 |      10 | phone         | electronics     |  9.00 |              4 |
 +---------+---------------+-----------------+-------+----------------+
+```
 
 ## Here is a typical MVP purchase scenario ...
 
