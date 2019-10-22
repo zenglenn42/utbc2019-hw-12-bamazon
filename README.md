@@ -28,56 +28,75 @@ mysql> select * from products;
 +---------+---------------+-----------------+-------+----------------+
 ```
 
-## Here is a typical MVP purchase scenario ...
+## Here is a typical purchase scenario ...
 
 ```
-% node bamazonCustomer.js
-Welcome to Bamazon, your complete source for some things
+Welcome to Bamazon, your complete source for certain things!
 
-┌─────────┬─────────┬─────────────────┬───────┐
-│ (index) │ item_id │  product_name   │ price │
-├─────────┼─────────┼─────────────────┼───────┤
-│    0    │    1    │    'slacks'     │   1   │
-│    1    │    2    │     'jeans'     │   2   │
-│    2    │    3    │    'chemise'    │   3   │
-│    3    │    4    │    'capris'     │   4   │
-│    4    │    5    │  'mr. coffee'   │   5   │
-│    5    │    6    │ 'swizzle stick' │  2.5  │
-│    6    │    7    │     'milk'      │  1.5  │
-│    7    │    8    │ 'soylent green' │  3.5  │
-│    8    │    9    │   'computer'    │  10   │
-│    9    │   10    │     'phone'     │   9   │
-│   10    │   11    │ 'planet earth'  │  100  │
-└─────────┴─────────┴─────────────────┴───────┘
-? Enter the item_id of the product you wish to buy:  4
-? How many units would you like to buy:  2
-Placing an order for 2 units of item id 4
-Total cost is $ 8
-```
+┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
+│ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
+├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
+│    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
+│    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
+│    4    │    5    │  'mr. coffee'   │   'household'   │   5   │       4        │
+│    5    │    6    │ 'swizzle stick' │   'household'   │  2.5  │       2        │
+│    6    │    7    │     'milk'      │    'grocery'    │  1.5  │       20       │
+│    7    │    8    │ 'soylent green' │    'grocery'    │  3.5  │       15       │
+│    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
+└─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
+? Enter the item_id of the product you wish to buy (or Q to quit):  5
+? How many units would you like to buy (or Q to quit):  2
+Total cost is $ 10.00
 
-## Here's what happens if you attempt to purchase more than what's in stock ...
+┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
+│ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
+├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
+│    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
+│    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
+│    4    │    5    │  'mr. coffee'   │   'household'   │   5   │       2        │
+│    5    │    6    │ 'swizzle stick' │   'household'   │  2.5  │       2        │
+│    6    │    7    │     'milk'      │    'grocery'    │  1.5  │       20       │
+│    7    │    8    │ 'soylent green' │    'grocery'    │  3.5  │       15       │
+│    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
+└─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
+? Enter the item_id of the product you wish to buy (or Q to quit):  7
+? How many units would you like to buy (or Q to quit):  3
+Total cost is $ 4.50
 
-```
-% node bamazonCustomer.js
-Welcome to Bamazon, your complete source for some things
-
-┌─────────┬─────────┬─────────────────┬───────┐
-│ (index) │ item_id │  product_name   │ price │
-├─────────┼─────────┼─────────────────┼───────┤
-│    0    │    1    │    'slacks'     │   1   │
-│    1    │    2    │     'jeans'     │   2   │
-│    2    │    3    │    'chemise'    │   3   │
-│    3    │    4    │    'capris'     │   4   │
-│    4    │    5    │  'mr. coffee'   │   5   │
-│    5    │    6    │ 'swizzle stick' │  2.5  │
-│    6    │    7    │     'milk'      │  1.5  │
-│    7    │    8    │ 'soylent green' │  3.5  │
-│    8    │    9    │   'computer'    │  10   │
-│    9    │   10    │     'phone'     │   9   │
-│   10    │   11    │ 'planet earth'  │  100  │
-└─────────┴─────────┴─────────────────┴───────┘
-? Enter the item_id of the product you wish to buy:  4
-? How many units would you like to buy:  200
-Placing an order for 200 units of item id 4
+┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
+│ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
+├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
+│    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
+│    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
+│    4    │    5    │  'mr. coffee'   │   'household'   │   5   │       2        │
+│    5    │    6    │ 'swizzle stick' │   'household'   │  2.5  │       2        │
+│    6    │    7    │     'milk'      │    'grocery'    │  1.5  │       17       │
+│    7    │    8    │ 'soylent green' │    'grocery'    │  3.5  │       15       │
+│    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
+└─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
+? Enter the item_id of the product you wish to buy (or Q to quit):  9
+? How many units would you like to buy (or Q to quit):  2
 Insufficient quantity.
+
+┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
+│ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
+├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
+│    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
+│    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
+│    4    │    5    │  'mr. coffee'   │   'household'   │   5   │       2        │
+│    5    │    6    │ 'swizzle stick' │   'household'   │  2.5  │       2        │
+│    6    │    7    │     'milk'      │    'grocery'    │  1.5  │       17       │
+│    7    │    8    │ 'soylent green' │    'grocery'    │  3.5  │       15       │
+│    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
+└─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
+? Enter the item_id of the product you wish to buy (or Q to quit):  q
+Goodbye
 ```
