@@ -1,6 +1,6 @@
-# utbc2019-hw-12-node-mysql
+# utbc2019-hw-12-bamazon
 
-Console-based version of Amazon :-)
+Console-based version of Amazon-lite :-)
 
 ## Here are the products Bamazon knows about ...
 
