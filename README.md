@@ -2,6 +2,12 @@
 
 Console-based version of Amazon-lite :-)
 
+## Technology stack
+
+* node.js
+* mysql
+* inquirer.js
+
 ## Here are the products Bamazon knows about ...
 
 ```
