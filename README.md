@@ -2,11 +2,32 @@
 
 Console-based version of Amazon-lite :-)
 
+This isn't a full CRUD application (Create, Read, Update, Delete).  
+Maybe CRU at best ...
+
+Creation
+
+* Creation of the database is bootstrapped through an *.sql file which must be run out-of-band.
+
+Read
+
+* The list of products is read and displayed with each purchase sequence.
+
+Update
+
+* The stock quantity of a particular item gets descremented as the customer makes purchases.
+
+Delete
+
+* Not implemented.  Note a requirement for this assignment.
+
+
 ## Technology stack
 
 * node.js
 * mysql
 * inquirer.js
+
 
 ## Here are the products Bamazon knows about ...
 
