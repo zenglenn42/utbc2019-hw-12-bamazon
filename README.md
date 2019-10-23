@@ -128,11 +128,12 @@ Ah, Node.js.
 
 I love the performance of your non-blocking, asynchronous programming model.
 
-If I need something from you that would normally block, I just make the request, 
-passing you a callback function.  
+If I need something from you that would normally block, I just ...
 
-Time passes, other requests can be efficiently queued up.  When you have what I need, you 
-invoke my callback with the results I want and my program logic continues.
+* make the request, passing you a callback function  
+* time passes, meanwhile while other requests efficiently queue up and get processed
+* when node has what I need, you invoke my callback with the results I want 
+* and my program logic continues
 
 You process a lot of stuff because my thread is not camped out in the foreground waiting.
 
