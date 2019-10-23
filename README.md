@@ -15,7 +15,7 @@ Read
 
 Update
 
-* The stock quantity of a particular item gets descremented as the customer makes purchases.
+* The stock quantity of a particular item gets decremented as the customer makes purchases.
 
 Delete
 
