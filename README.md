@@ -121,3 +121,79 @@ Insufficient quantity.
 ? Enter the item_id of the product you wish to buy (or Q to quit):  q
 Goodbye
 ```
+
+## Designer's Blog
+
+Ah, Node.js.  
+
+I love the performance of your non-blocking, asynchronous programming model.
+
+If I need something from you that would normally block, I just make the request, 
+passing you a callback function.  
+
+Time passes, other requests can be efficiently queued up.  When you have what I need, you 
+invoke my callback with the results I want and my program logic continues.
+
+You process a lot of stuff because my thread is not camped out in the foreground waiting.
+
+But you make my code difficult to read ... since my program logic snakes across callbacks.
+
+For the Bamazon application, the pseudo code is simple enough:
+
+```
+while still shopping
+do
+    list products in store db
+    prompt user for item to buy or quit shopping
+        if valid item
+            prompt user for quantity to buy or quit shopping
+                if valid quantity
+                    place order, updating stock quantity in db
+                    calculate and display order cost
+                else
+                    display error message "insufficient quantity"
+                endif
+        else
+            display error "invalid item"
+        endif
+done
+```	
+
+But because of the callback model, the actual code flows across my screen in this
+disjoint way :-/
+
+```
+main() {
+    console.log("Welcome to Bamazon")
+    listProducts()
+}
+```
+
+with my code-reading brain having to chase logic across callbacks:
+
+```
+listProducts() {
+    queryDB(callback() {
+        selectProduct()
+        checkValidItem(cb)
+    })
+}
+
+checkValidItem(callback() {
+    if valid item {
+        selectQuantity()
+        checkValidQuantity(cb)
+    }
+})
+
+checkValidQuantity(callback() {
+    if valid quantity
+        fulfillOrder({
+            calculate and display order cost
+            listProducts()
+        })
+    else
+        display error message "insufficient quantity"
+        listProducts()
+})
+```
