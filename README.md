@@ -213,6 +213,8 @@ checkValidQuantity(callback() {
         display error message "insufficient quantity"
         listProducts()
 })
+
+...
 ```
 
 ### Options
