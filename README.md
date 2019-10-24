@@ -228,7 +228,7 @@ Fortunately, there are a couple options for addressing this readability issue:
 
 ## Async-based Implementation
 
-I'm reading Marc Wandschneider's book on Node.js and he is big on using the 'async'
+I'm reading Marc Wandschneider's book on Node.js and he is big on using async
 (versus promises) to bring some clarity to the callback-chaining style that Node's
 programming model often requires.
 
