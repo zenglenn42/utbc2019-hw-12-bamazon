@@ -191,10 +191,10 @@ checkValidQuantity(callback() {
     if valid quantity
         fulfillOrder({
             calculate and display order cost
-            listProducts()    // <--
+            listProducts(cb)  // <--
         })
     else
         display error message "insufficient quantity"
-        listProducts()        // <--
+        listProducts(cb)      // <--
 })
 ```
