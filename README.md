@@ -1,6 +1,6 @@
 # utbc2019-hw-12-bamazon
 
-Console-based version of Amazon ... but with only 10 products. :-)
+Console-based version of Amazon ... but with only 9 products. :-)
 
 ![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
 
@@ -39,20 +39,19 @@ When talking about database operations, you often speak of "CRUD" (create, read,
 
 ```
 mysql> select * from products;
-+---------+---------------+-----------------+-------+----------------+
-| item_id | product_name  | department_name | price | stock_quantity |
-+---------+---------------+-----------------+-------+----------------+
-|       1 | slacks        | mens            |  1.00 |             10 |
-|       2 | jeans         | mens            |  2.00 |             20 |
-|       3 | chemise       | womens          |  3.00 |             24 |
-|       4 | capris        | womens          |  4.00 |             12 |
-|       5 | mr. coffee    | household       |  5.00 |              4 |
-|       6 | swizzle stick | household       |  2.50 |              2 |
-|       7 | milk          | grocery         |  1.50 |             20 |
-|       8 | soylent green | grocery         |  3.50 |             15 |
-|       9 | computer      | electronics     | 10.00 |              9 |
-|      10 | phone         | electronics     |  9.00 |              4 |
-+---------+---------------+-----------------+-------+----------------+
++---------+---------------+-----------------+--------+----------------+
+| item_id | product_name  | department_name | price  | stock_quantity |
++---------+---------------+-----------------+--------+----------------+
+|       1 | slacks        | mens            |   1.00 |             10 |
+|       2 | jeans         | mens            |   2.00 |             20 |
+|       3 | chemise       | womens          |   3.00 |             24 |
+|       4 | capris        | womens          |   4.00 |             12 |
+|       5 | mr. coffee    | household       |   5.00 |              4 |
+|       6 | swizzle stick | household       |   2.50 |              2 |
+|       7 | milk          | grocery         |   1.50 |             20 |
+|       8 | soylent green | grocery         |   3.50 |             15 |
+|       9 | Earth         | planet          | 100.00 |              1 |
++---------+---------------+-----------------+--------+----------------+
 ```
 
 ## Here is a typical purchase scenario ...
