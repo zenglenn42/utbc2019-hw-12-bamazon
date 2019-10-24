@@ -2,10 +2,14 @@
 
 ![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
 
-Console-based version of Amazon-lite :-)
+Console-based version of Amazon ... but with only 10 products. :-)
 
-This isn't a full CRUD application (Create, Read, Update, Delete).  
-Maybe CRU at best ...
+In the beginning, Amazon was all about the books.  In time, they scaled up to sell other things, including the very compute platform
+that drives their enterprise.  But behind all the impressive engineering that enables Amazon's current instantiation is a database of products for sale.  Those products have a name, price, and an in-stock quantity.
+
+With this assignment we take a crack at implementing a simple, database-backed, ecommerce, console application.
+
+When talking about database apps, you often speak of "CRUD" (create, read, update, delete).  These are the classic verbs associated with db interactions.  In our case, we're only implementing CRU ...
 
 * Create
 
@@ -26,7 +30,7 @@ Maybe CRU at best ...
 
 ## Technology stack
 
-* node.js
+* Node.js
 * mysql db
 * inquirer.js
 
