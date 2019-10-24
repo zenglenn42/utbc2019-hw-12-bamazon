@@ -1,5 +1,7 @@
 # utbc2019-hw-12-bamazon
 
+![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
+
 Console-based version of Amazon-lite :-)
 
 This isn't a full CRUD application (Create, Read, Update, Delete).  
