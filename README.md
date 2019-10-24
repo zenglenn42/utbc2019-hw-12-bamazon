@@ -141,6 +141,7 @@ But you make my code difficult to read ... since my program logic snakes across 
 
 For the Bamazon application, the pseudo code is simple enough:
 
+### Simple Pseudo Code 😊
 ```
 while still shopping
 do
@@ -161,7 +162,9 @@ done
 ```	
 
 But because of the callback model, the actual code flows across my screen in this
-disjoint way :-/
+disjoint way. 
+
+### Ugly Actual Code 🙁
 
 ```
 main() {
