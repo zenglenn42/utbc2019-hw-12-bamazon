@@ -19,7 +19,7 @@ Maybe CRU at best ...
 
 	* The stock quantity of a particular item gets decremented as the customer makes purchases.
 
-* Delete
+* ~Delete~
 
 	* Not implemented.  Not a requirement for this assignment.
 
