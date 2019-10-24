@@ -176,14 +176,14 @@ with my code-reading brain having to chase logic across callbacks:
 listProducts() {
     queryDB(callback() {
         selectProduct()
-        checkValidItem(cb)
+        checkValidItem(cb)     // <--
     })
 }
 
 checkValidItem(callback() {
     if valid item {
         selectQuantity()
-        checkValidQuantity(cb)
+        checkValidQuantity(cb) // <--
     }
 })
 
@@ -191,10 +191,10 @@ checkValidQuantity(callback() {
     if valid quantity
         fulfillOrder({
             calculate and display order cost
-            listProducts()
+            listProducts()    // <--
         })
     else
         display error message "insufficient quantity"
-        listProducts()
+        listProducts()        // <--
 })
 ```
