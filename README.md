@@ -53,6 +53,8 @@ mysql> select * from products;
 
 ## Here is a typical purchase scenario ...
 
+![alt](docs/img/computer-keyboard-contemporary-electronics-257881.jpg)
+
 ```
 Welcome to Bamazon, your complete source for certain things!
 
