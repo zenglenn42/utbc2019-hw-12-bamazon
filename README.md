@@ -1,8 +1,8 @@
 # utbc2019-hw-12-bamazon
 
-![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
-
 Console-based version of Amazon ... but with only 10 products. :-)
+
+![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
 
 In the beginning, Amazon was all about the books.  In time, they scaled up to sell other things, including the very compute platform
 that drives their enterprise.  But behind all the impressive engineering that enables Amazon's current instantiation is a database of products for sale.  Those products have a name, price, and an in-stock quantity.
