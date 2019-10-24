@@ -7,21 +7,21 @@ Console-based version of Amazon-lite :-)
 This isn't a full CRUD application (Create, Read, Update, Delete).  
 Maybe CRU at best ...
 
-Create
+* Create
 
-* Creation of the database is bootstrapped through an *.sql file which must be run out-of-band.
+	* Creation of the database is bootstrapped through an *.sql file which must be run out-of-band.
 
-Read
+* Read
 
-* The list of products is read and displayed with each purchase sequence.
+	* The list of products is read and displayed with each purchase sequence.
 
-Update
+* Update
 
-* The stock quantity of a particular item gets decremented as the customer makes purchases.
+	* The stock quantity of a particular item gets decremented as the customer makes purchases.
 
-Delete
+* Delete
 
-* Not implemented.  Not a requirement for this assignment.
+	* Not implemented.  Not a requirement for this assignment.
 
 
 ## Technology stack
