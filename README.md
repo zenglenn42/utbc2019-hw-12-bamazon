@@ -9,7 +9,7 @@ Maybe CRU at best ...
 
 * Create
 
-	* Creation of the database is bootstrapped through an *.sql file which must be run out-of-band.
+	* Creation of the database is bootstrapped through an [*.sql file](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/bamazonSeed.sql#L1) which must be run out-of-band.
 
 * Read
 
@@ -27,7 +27,7 @@ Maybe CRU at best ...
 ## Technology stack
 
 * node.js
-* mysql
+* mysql db
 * inquirer.js
 
 
