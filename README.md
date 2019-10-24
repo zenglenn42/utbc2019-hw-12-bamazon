@@ -170,7 +170,7 @@ main() {
 }
 ```
 
-with my code-reading brain having to chase logic across callbacks:
+and the rest of my code looking disjoint and not at all like my pseudo code:
 
 ```
 listProducts() {
