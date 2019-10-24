@@ -164,7 +164,7 @@ done
 But because of the callback model, the actual code flows across my screen in this
 disjoint way. 
 
-### Ugly Actual Code 🙁
+### Ugly Actual-ish Code 🙁
 
 ```
 main() {
