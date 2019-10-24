@@ -201,3 +201,12 @@ checkValidQuantity(callback() {
         listProducts()
 })
 ```
+
+### Options
+
+Fortunately, there are a couple options for addressing this readability issue:
+
+* [async](https://greenleaves-deployed.herokuapp.com/)
+* [promise](https://www.npmjs.com/package/promise)
+
+In the fullness of time, I may retrofit my code with this fu.
