@@ -136,10 +136,10 @@ Ah, Node.js.
 
 I love the performance of your non-blocking, [asynchronous programming model](https://mindmajix.com/node-js/what-is-node-js).
 
-If I need something from you that would normally block, I just ...
+If I need something from you that would normally block on i/o, I just ...
 
 * make the request, passing you a callback function  
-* time passes, meanwhile while other requests efficiently queue up and get processed
+* time passes, other requests queue-up efficiently
 * when node has what I need, you invoke my callback with the results I want 
 * and my program logic continues
 
