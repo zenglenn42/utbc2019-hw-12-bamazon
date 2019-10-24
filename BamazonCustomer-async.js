@@ -13,17 +13,17 @@ module.exports = class BamazonCustomer {
 
   shop() {
     this.connection.connect(err => {
-      if (err) {
-        this._exitOnError(
-          err,
-          "\nSorry, but we're unable to accept purchase requests at this time.",
-          `Please call technical support at ${this.techSupportNumber} to get a status update.`
-          );
+        if (err) {
+            this._exitOnError(
+                err,
+                "\nSorry, but we're unable to accept purchase requests at this time.",
+                `Please call technical support at ${this.techSupportNumber} to get a status update.`
+            );
         } else {
-        const welcomeMsg = "Welcome to Bamazon, your complete source for some things.";
-        console.log(`\n${welcomeMsg}`);
-        this._startShopping(this._stopShoppingCB.bind(this));
-      }
+            const welcomeMsg = "Welcome to Bamazon, your complete source for some things.";
+            console.log(`\n${welcomeMsg}`);
+            this._startShopping(this._stopShoppingCB.bind(this));
+        }
     });
   }
 
