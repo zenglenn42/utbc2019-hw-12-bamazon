@@ -219,16 +219,15 @@ Fortunately, there are a couple options for addressing this readability issue:
 * [async](https://greenleaves-deployed.herokuapp.com/)
 * [promise](https://www.npmjs.com/package/promise)
 
-In the fullness of time, I may retrofit my code with this fu.
-
 ## Async-based Implementation
 
 I'm reading Marc Wandschneider's book on Node.js and he is big on using the 'async'
 (versus promises) to bring some clarity to the callback-chaining style that Node's
 programming model often requires.
 
-So I'm giving that a shot plus throwing in some object oriented decomposition while
-I'm at it.
+![alt](docs/img/mike-lewis-headsmart-media-waAAaeC9hns-unsplash.jpg)
+
+I'm using the 'waterfall' async model plus throwing in some object oriented decomposition.
 
 The overall Bamazon customer class looks like this ...
 
