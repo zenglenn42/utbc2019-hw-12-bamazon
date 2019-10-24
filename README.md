@@ -7,9 +7,9 @@ Console-based version of Amazon ... but with only 10 products. :-)
 In the beginning, Amazon was all about the books.  In time, they scaled up to sell other things, including the very compute platform
 that drives their enterprise.  But behind all the impressive engineering that enables Amazon's current instantiation is a database of products for sale.  Those products have a name, price, and an in-stock quantity.
 
-With this assignment we take a crack at implementing a simple, database-backed, ecommerce, console application.
+With this assignment, we take a crack at implementing a bare-bones, database-backed ecommerce application.
 
-When talking about database apps, you often speak of "CRUD" (create, read, update, delete).  These are the classic verbs associated with db interactions.  In our case, we're only implementing CRU ...
+When talking about database operations, you often speak of "CRUD" (create, read, update, delete).  These are the classic verbs associated with db interactions.  In our case, we're only implementing CRU, though.
 
 * Create
 
