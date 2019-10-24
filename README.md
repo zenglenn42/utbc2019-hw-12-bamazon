@@ -208,6 +208,8 @@ checkValidQuantity(callback() {
 
 ### Options
 
+![alt](docs/img/vladislav-babienko-KTpSVEcU0XU-unsplash.jpg)
+
 Fortunately, there are a couple options for addressing this readability issue:
 
 * [async](https://greenleaves-deployed.herokuapp.com/)
