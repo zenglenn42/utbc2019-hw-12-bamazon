@@ -126,6 +126,10 @@ Insufficient quantity.
 Goodbye
 ```
 
+Of course the beauty of this application isn't in the frontend .... it's in the backend where get intimations of how to connect to a database and perform some basic queries and updates.  In later assignments, we'll and an Express server and wrapper our DB interactions in an Object Relational Mapping (ORM) like Sequelize where we can use Promise-based idioms to improve the readability of our code.
+
+![alt](docs/img/database.png)
+
 ## Designer's Blog
 
 Ah, Node.js.  
