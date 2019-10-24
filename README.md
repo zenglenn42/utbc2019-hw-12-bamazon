@@ -220,3 +220,118 @@ Fortunately, there are a couple options for addressing this readability issue:
 * [promise](https://www.npmjs.com/package/promise)
 
 In the fullness of time, I may retrofit my code with this fu.
+
+## Async-based Implementation
+
+I'm reading Marc Wandschneider's book on Node.js and he is big on using the 'async'
+(versus promises) to bring some clarity to the callback-chaining style that Node's
+programming model often requires.
+
+So I'm giving that a shot plus throwing in some object oriented decomposition while
+I'm at it.
+
+The overall Bamazon customer class looks like this ...
+
+```
+module.exports = class BamazonCustomer {
+
+  constructor(dbConnectionConfig, selectProductPrompt, selectQuantityPrompt) {
+    this.techSupportNumber = "1 800 867-5309"
+    this.connection = mysql.createConnection(dbConnectionConfig);
+    this.selectProductPrompt = selectProductPrompt;
+    this.selectQuantityPrompt = selectQuantityPrompt;
+  }
+
+  shop() {
+    this.connection.connect(err => {
+      if (err) {
+        this._exitOnError(
+          err,
+          "\nSorry, but we're unable to accept purchase requests at this time.",
+          `Please call technical support at ${this.techSupportNumber} to get a status update.`
+          );
+        } else {
+        const welcomeMsg = "Welcome to Bamazon, your complete source for some things.";
+        console.log(`\n${welcomeMsg}`);
+        this._startShopping(this._stopShoppingCB.bind(this));
+      }
+    });
+  }
+
+  _startShopping(callback) {
+    async.waterfall([                     // <-- The new hotness :-)
+        this._listProducts.bind(this),    //
+        this._selectProduct.bind(this),   // Presumably this is more readable because you can see
+        this._selectQuantity.bind(this),  // how the (asynchronous) steps in the chain flow from
+        this._checkInStock.bind(this),    // one callback into another.
+        this._fulfillOrder.bind(this)     // 
+      ],                                  // The coding style is a tad idiosyncratic.
+      (err, results) => {
+        callback(err, results);
+      });
+  }
+ 
+  ...
+}
+```
+
+The driver to kick off a shopping sequence is simple with our OO decomposition:
+
+```
+var BamazonCustomer = require("./BamazonCustomer-async.js")
+
+// Configure mysql server connection.
+const dbConfig = {
+  host: "localhost",
+  port: 3306,
+  database: "bamazon_db",
+  user: "root",
+  password: ""
+}
+
+// Configure user interface prompts for shopping experience.
+const ITEM_ID_PROMPT = "Enter the item_id of the product you wish to buy (or Q to quit): "
+const ITEM_ID_FAIL_PROMPT = "Please enter a valid item ID. "
+const selectProductPrompt = [{
+  type: 'input',
+  name: 'choice',
+  message: ITEM_ID_PROMPT,
+  validate: function(value) {
+                var pass = value.match(/^[1-9]{1}[0-9]{0,}$/) || value.match(/^[qQ].*/);
+                  if (pass) {
+                    return true;
+                  }
+                  return ITEM_ID_FAIL_PROMPT;
+            }
+}];
+const ITEM_QNTY_PROMPT = "How many units would you like to buy (or Q to quit): "
+const ITEM_QNTY_FAIL_PROMPT = "Please enter a valid quantity. "
+const selectQuantityPrompt = [{
+    type: 'input',
+    name: 'choice',
+    message: ITEM_QNTY_PROMPT,
+    validate: function(value) {
+                  var pass = value.match(/^[1-9]{1}[0-9]{0,}$/) || value.match(/^[qQ].*/);
+                  if (pass) {
+                    return true;
+                  }
+                  return ITEM_QNTY_FAIL_PROMPT;
+              }
+}];
+
+// Instantiate a Bamazon session and start shopping.
+var customer = new BamazonCustomer(dbConfig, selectProductPrompt, selectQuantityPrompt);
+customer.shop();
+```
+
+After going through this exercise, I'm still a bit on the fence with async.  While I see the
+overall callback flow better, there's still some opacity to parameter passing between callbacks.
+Some of this is improved by coding up the waterfall methods in the sequence in which they flow.
+I guess async is cool.  I'll play with promises in other code to see what I like best.
+
+Also, with a bit more effort, we could separate out the messages and error conditions from the
+BamazonCustomer class entirely to facilitate internationalization.
+
+The OO work was fun but I am missing the notion of private or protected methods in JS.  I've adopted
+the convention of prepending an underbar to my private methods (i.e., _privateMethod() {..}) as
+a clue to consumers of my class /not/ to use those.
