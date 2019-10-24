@@ -7,7 +7,7 @@ Console-based version of Amazon-lite :-)
 This isn't a full CRUD application (Create, Read, Update, Delete).  
 Maybe CRU at best ...
 
-Creation
+Create
 
 * Creation of the database is bootstrapped through an *.sql file which must be run out-of-band.
 
