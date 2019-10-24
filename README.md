@@ -170,7 +170,7 @@ main() {
 }
 ```
 
-and the rest of my code looking disjoint and not at all like my pseudo code:
+and the rest of my code looking disjoint and not at all like my pseudo code: :-/
 
 ```
 listProducts() {
