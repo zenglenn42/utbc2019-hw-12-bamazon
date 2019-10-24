@@ -134,7 +134,7 @@ Of course the beauty of this application isn't in the frontend .... it's in the 
 
 Ah, Node.js.  
 
-I love the performance of your non-blocking, asynchronous programming model.
+I love the performance of your non-blocking, [asynchronous programming model](https://mindmajix.com/node-js/what-is-node-js).
 
 If I need something from you that would normally block, I just ...
 
