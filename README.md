@@ -56,6 +56,8 @@ mysql> select * from products;
 ![alt](docs/img/computer-keyboard-contemporary-electronics-257881.jpg)
 
 ```
+% node bamazonCustomer.js
+
 Welcome to Bamazon, your complete source for certain things!
 
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
