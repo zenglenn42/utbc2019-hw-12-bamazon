@@ -88,12 +88,12 @@ mysql> select * from products;
 ```
 % node bamazonCustomer.js
 
-Welcome to Bamazon, your complete source for certain things!
+Welcome to Bamazon, your complete source for some things.
 
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
 │ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
 ├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
-│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       10       │
 │    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
 │    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
 │    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
@@ -110,7 +110,7 @@ Total cost is $ 10.00
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
 │ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
 ├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
-│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       10       │
 │    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
 │    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
 │    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
@@ -127,7 +127,7 @@ Total cost is $ 4.50
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
 │ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
 ├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
-│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       10       │
 │    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
 │    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
 │    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
@@ -139,12 +139,36 @@ Total cost is $ 4.50
 └─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
 ? Enter the item_id of the product you wish to buy (or Q to quit):  9
 ? How many units would you like to buy (or Q to quit):  2
-Insufficient quantity.
+
+We don't have enough of that product to complete your order.
+Please reduce your amount or check back when we have restocked.
+Insufficient quantity
+
 
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
 │ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
 ├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
-│    0    │    1    │    'slacks'     │     'mens'      │   1   │       8        │
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       10       │
+│    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
+│    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
+│    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
+│    4    │    5    │  'mr. coffee'   │   'household'   │   5   │       2        │
+│    5    │    6    │ 'swizzle stick' │   'household'   │  2.5  │       2        │
+│    6    │    7    │     'milk'      │    'grocery'    │  1.5  │       17       │
+│    7    │    8    │ 'soylent green' │    'grocery'    │  3.5  │       15       │
+│    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
+└─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
+? Enter the item_id of the product you wish to buy (or Q to quit):  10
+
+Invalid item id.
+Please try again.
+
+
+
+┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
+│ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
+├─────────┼─────────┼─────────────────┼─────────────────┼───────┼────────────────┤
+│    0    │    1    │    'slacks'     │     'mens'      │   1   │       10       │
 │    1    │    2    │     'jeans'     │     'mens'      │   2   │       20       │
 │    2    │    3    │    'chemise'    │    'womens'     │   3   │       24       │
 │    3    │    4    │    'capris'     │    'womens'     │   4   │       12       │
@@ -155,7 +179,8 @@ Insufficient quantity.
 │    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
 └─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
 ? Enter the item_id of the product you wish to buy (or Q to quit):  q
-Goodbye
+Thank you for visiting Bamazon
+
 ```
 
 Of course the beauty of this application isn't in the frontend .... it's in the backend where we get intimations of how to connect to a database and perform some basic queries and updates.  In later assignments, we'll add an Express server and wrapper our database interactions in an Object Relational Mapping (ORM) like Sequelize where we can use Promise-based idioms to improve the readability of our code.
