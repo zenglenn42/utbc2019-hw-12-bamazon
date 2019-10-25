@@ -330,6 +330,10 @@ var customer = new BamazonCustomer(dbConfig, selectProductPrompt, selectQuantity
 customer.shop();
 ```
 
+## Lessons Learned
+
+![alt](docs/img/allef-vinicius-iNOgTXeT3OM-unsplash.jpg)
+
 After going through this exercise, I'm still a bit on the fence with async.  While I see the
 overall callback flow better, there's still some opacity to parameter passing between callbacks.
 Some of this is improved by coding up the waterfall methods in the sequence in which they flow.
