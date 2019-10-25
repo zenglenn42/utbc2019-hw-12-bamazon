@@ -9,24 +9,51 @@ that drives their enterprise.  But behind all the impressive engineering that en
 
 With this assignment, we take a crack at implementing a bare-bones, database-backed ecommerce application.
 
-When talking about database operations, you often speak of "CRUD" (create, read, update, delete).  These are the classic verbs associated with db interactions.  In our case, we're only implementing CRU, though.
+When talking about database operations, you often speak of "CRUD" (create, read, update, delete).  These are the classic verbs associated with db interactions.  In our case, we're only implementing "CRU", though.
+
+Here's a sampling of the mysql fu that enables our app:
 
 * Create
 
 	* Creation of the database is bootstrapped through an [*.sql file](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/bamazonSeed.sql#L1) which must be run out-of-band.
+  ```
+      % mysql -u root < bamazonSeed.sql
+  ```
 
 * Read
 
 	* The list of products is read and displayed with each purchase sequence.
+  ```
+      connection.query(
+        "SELECT * FROM products",
+        (err, res) => {
+            if (err) throw err;
+            console.table(res);
+        }
+      );
+  ```
 
 * Update
 
 	* The stock quantity of a particular item gets decremented as the customer makes purchases.
+  ```
+      const query = `UPDATE products 
+        SET stock_quantity = 
+            stock_quantity - ${qnty} 
+        WHERE item_id = ${itemId}`;
+
+      connection.query(
+        query, 
+        (err, res) => {
+          if (err) throw err;
+          // use results (res) here ...
+        }
+      );
+  ```
 
 * ~Delete~
 
-	* Not implemented.  Not a requirement for this assignment.
-
+	* Not a requirement for this assignment.
 
 ## Technology stack
 
@@ -180,7 +207,7 @@ disjoint way.
 ### Ugly Actual-ish Code 🙁
 
 ```
-main() {
+function main() {
     console.log("Welcome to Bamazon")
     listProducts()
 }
@@ -192,26 +219,19 @@ and the rest of my logic snakes across callbacks making it less readable:
 listProducts() {
     queryDB(callback() {
         selectProduct()
-        checkValidItem(cb)     // <--
+        checkValidItem(cb)     // <-- :-/
     })
 }
 
 checkValidItem(callback() {
-    if valid item {
+    if (itemInDB(..)) {
         selectQuantity()
-        checkValidQuantity(cb) // <--
+        checkValidQuantity(cb) // <-- :-/
     }
 })
 
 checkValidQuantity(callback() {
-    if valid quantity
-        fulfillOrder({
-            calculate and display order cost
-            listProducts()
-        })
-    else
-        display error message "insufficient quantity"
-        listProducts()
+    queryDBforStockQntyCB(cb)  // <-- :-/
 })
 
 ...
@@ -345,3 +365,27 @@ BamazonCustomer class entirely to facilitate internationalization.
 The OO work was fun but I am missing the notion of private or protected methods in JS.  I've adopted
 the convention of prepending an underbar to my private methods (i.e., _privateMethod() {..}) as
 a clue to consumers of my class /not/ to use those.
+
+There's a wrinkle worth noting with the mysql npm package.  It supports a wildcarding syntax in the SQL string using '?':
+```
+    let itemId = 3;
+    connection.query(
+        "SELECT stock_quantity 
+         FROM products 
+         WHERE ?",             // <-- :-)
+        { item_id: itemId },   // <-- :-)
+        (err, res) => {
+          if (err) processErr(err);
+          if (res[0].stock_quantity < orderQuantity) {
+            console.log("Insufficient quantity!");
+          }
+          ...
+        }
+    );
+```
+which is equivalent to:
+```
+      "SELECT stock_quantity 
+       FROM products 
+       WHERE item_id = 3"
+```
