@@ -354,17 +354,25 @@ customer.shop();
 
 ![alt](docs/img/allef-vinicius-iNOgTXeT3OM-unsplash.jpg)
 
+### async
+
 After going through this exercise, I'm still a bit on the fence with async.  While I see the
 overall callback flow better, there's still some opacity to parameter passing between callbacks.
 Some of this is improved by coding up the waterfall methods in the sequence in which they flow.
 I guess async is cool.  I'll play with promises in other code to see what I like best.
 
-Also, with a bit more effort, we could separate out the messages and error conditions from the
+### i18n
+
+With a bit more effort, we could separate out the messages and error conditions from the
 BamazonCustomer class entirely to facilitate internationalization.
 
-The OO work was fun but I am missing the notion of private or protected methods in JS.  I've adopted
-the convention of prepending an underbar to my private methods (i.e., _privateMethod() {..}) as
-a clue to consumers of my class /not/ to use those.
+### what's with the _method names?
+
+The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internally-used methods by the class itself that we /don't want to exposure to users of our class.  
+
+I've adopted the convention of prepending an underbar to my private methods (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
+
+### wilding carding in SQL strings
 
 There's a wrinkle worth noting with the mysql npm package.  It supports a wildcarding syntax in the SQL string using '?':
 ```
