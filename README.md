@@ -197,7 +197,7 @@ If I need something from you that would normally block on i/o, I just ...
 
 * make the request, passing you a callback function  
 * time passes, other requests queue-up efficiently
-* when node has what I need, you invoke my callback with the results I want 
+* when you have what I need, you invoke my callback with the results
 * and my program logic continues
 
 You process a lot of stuff because my thread is not camped out in the foreground waiting.
