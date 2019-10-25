@@ -15,7 +15,7 @@ Here's a sampling of the mysql fu that enables our app:
 
 * Create
 
-	* Creation of the database is bootstrapped through an [*.sql file](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/bamazonSeed.sql#L1) which must be run out-of-band.
+	* Creation of the database is bootstrapped through an [sql file](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/bamazonSeed.sql#L1) which must be run out-of-band.
   ```
       % mysql -u root < bamazonSeed.sql
   ```
@@ -366,9 +366,9 @@ I guess async is cool.  I'll play with promises in other code to see what I like
 With a bit more effort, we could separate out the messages and error conditions from the
 BamazonCustomer class entirely to facilitate internationalization.
 
-### what's with the _method names?
+### what's with the _method names in the class?
 
-The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internally-used methods by the class itself that we /don't/ want to exposure to users of our class.
+The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internal methods (used by the class itself) that we /don't/ want to expose to users of our class.
 
 I've adopted the convention of prepending an underbar to my [private methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L30) (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
 
