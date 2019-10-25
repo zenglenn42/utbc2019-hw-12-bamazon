@@ -181,7 +181,7 @@ But you make my code difficult to read ... since my program logic snakes across 
 
 For the Bamazon application, the pseudo code is simple enough:
 
-### Simple Pseudo Code 😊
+### Simple Pseudo Code 🙂
 ```
 while still shopping
 do
@@ -254,9 +254,9 @@ programming model often requires.
 
 ![alt](docs/img/mike-lewis-headsmart-media-waAAaeC9hns-unsplash.jpg)
 
-I'm using the 'waterfall' async model plus throwing in some object oriented decomposition.
+I'm using the 'waterfall' async model in which the results of the upstream callback are passed as parameters to the next downstream callback.  Plus I'm throwing in some object oriented decomposition since it's just the right thing to do.
 
-The overall Bamazon customer class looks like this ...
+The overall Bamazon customer class is now looing like this ...
 
 ```
 module.exports = class BamazonCustomer {
