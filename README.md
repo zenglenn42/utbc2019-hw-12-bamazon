@@ -372,7 +372,7 @@ The OO work was fun but I am missing the notion of private or protected methods 
 
 I've adopted the convention of prepending an underbar to my [private methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L30) (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
 
-### wilding carding in SQL strings
+### wildcarding in SQL strings
 
 There's a wrinkle worth noting with the mysql npm package.  It supports a wildcarding syntax in the SQL string using '?':
 ```
