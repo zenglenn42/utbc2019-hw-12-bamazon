@@ -368,9 +368,9 @@ BamazonCustomer class entirely to facilitate internationalization.
 
 ### what's with the _method names?
 
-The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internally-used methods by the class itself that we /don't want to exposure to users of our class.  
+The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internally-used methods by the class itself that we /don't/ want to exposure to users of our class.
 
-I've adopted the convention of prepending an underbar to my private methods (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
+I've adopted the convention of prepending an underbar to my [private methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L30) (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
 
 ### wilding carding in SQL strings
 
@@ -397,3 +397,14 @@ which is equivalent to:
        FROM products 
        WHERE item_id = 3"
 ```
+### error handling in callbacks
+
+Error handling fascinates me.  It's a great benchmark by which to measure the sophistication of a body of code.
+
+* Is the code overly optimistic, with no error handling?
+* Are try/catch idioms used where appropriate?
+* Are the errors annunciated to the user /useful/?
+  * Do the messages spell out the implications of the error?
+  * Is there any remedial or actionable advice given?
+
+For this application, I added a couple [helper methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L57) for reporting and possibly exiting on an error condition.  I also took a page from Marc's thinking with [annunciating errors](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L44) in callbacks since using throw is a bit problematic because the callback executes in it's own context and you won't be able to catch the error from your mainline logic.
