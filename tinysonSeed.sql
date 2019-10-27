@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS bamazon_db;
-CREATE DATABASE bamazon_db;
-USE bamazon_db;
+DROP DATABASE IF EXISTS tinyson_db;
+CREATE DATABASE tinyson_db;
+USE tinyson_db;
 
 CREATE TABLE products (
     item_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,

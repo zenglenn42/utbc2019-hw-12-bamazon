@@ -1,5 +1,5 @@
 {
-  "name": "utbc2019-hw-12-bamazon",
+  "name": "utbc2019-hw-12-tinyson",
   "version": "1.0.0",
   "description": "Console-based version of Amazon :-)",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zenglenn42/utbc2019-hw-12-bamazon.git"
+    "url": "git+https://github.com/zenglenn42/utbc2019-hw-12-tinyson.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zenglenn42/utbc2019-hw-12-bamazon/issues"
+    "url": "https://github.com/zenglenn42/utbc2019-hw-12-tinyson/issues"
   },
-  "homepage": "https://github.com/zenglenn42/utbc2019-hw-12-bamazon#readme",
+  "homepage": "https://github.com/zenglenn42/utbc2019-hw-12-tinyson#readme",
   "dependencies": {
     "async": "^3.1.0",
     "inquirer": "^7.0.0",

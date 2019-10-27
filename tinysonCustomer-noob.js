@@ -1,7 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
-const DB = "bamazon_db"
+const DB = "tinyson_db"
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
     password: ""
 });
 
-const WELCOME_MESSAGE = "Welcome to Bamazon, your complete source for certain things!";
+const WELCOME_MESSAGE = "Welcome to Tinyson, your complete source for certain things!";
 connection.connect(err => {
     if (err) throw err;
     console.log(WELCOME_MESSAGE);

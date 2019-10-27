@@ -2,7 +2,7 @@ var mysql = require("mysql");
 var inquirer = require("inquirer");
 var async = require("async");
 
-module.exports = class BamazonCustomer {
+module.exports = class TinysonCustomer {
 
   constructor(dbConnectionConfig, selectProductPrompt, selectQuantityPrompt) {
     this.techSupportNumber = "1 800 867-5309"
@@ -20,7 +20,7 @@ module.exports = class BamazonCustomer {
                 `Please call technical support at ${this.techSupportNumber} to get a status update.`
             );
         } else {
-            const welcomeMsg = "Welcome to Bamazon, your complete source for some things.";
+            const welcomeMsg = "Welcome to Tinyson, your complete source for some things.";
             console.log(`\n${welcomeMsg}`);
             this._startShopping(this._stopShoppingCB.bind(this));
         }
@@ -68,7 +68,7 @@ module.exports = class BamazonCustomer {
 
   _exitOnQuit(choice) {
     if (choice.toLowerCase() === "q") {
-      console.log("Thank you for visiting Bamazon\n");
+      console.log("Thank you for visiting Tinyson\n");
       this.connection.end();
       process.exit(0);
     }
@@ -182,4 +182,4 @@ module.exports = class BamazonCustomer {
         }
     })
   }
-} // end class Bamazon
+} // end class Tinyson

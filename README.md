@@ -1,11 +1,10 @@
-# utbc2019-hw-12-bamazon
+# utbc2019-hw-12-tinyson
 
-Console-based version of Amazon ... but with only 9 products. :-)
+Console-based ecommerce ... but with only 9 products. :-)
 
 ![alt](docs/img/daniel-eledut-a8KNFpidIPI-unsplash.jpg)
 
-In the beginning, Amazon was all about the books.  In time, they scaled up to sell other things, including the very compute platform
-that drives their enterprise.  But behind all the impressive engineering that enables Amazon's current instantiation is a database of products for sale.  Those products have a name, price, and an in-stock quantity.
+Behind all the impressive engineering that enables most modern ecommerce sites is a database of products for sale.  Those products have a name, price, and an in-stock quantity.
 
 With this assignment, we take a crack at implementing a bare-bones, database-backed ecommerce application.  Spoiler Alert: No fancy UI on this.  If you look, you'll find the beauty.
 
@@ -15,9 +14,9 @@ Here's a sampling of the mysql fu that enables our app:
 
 * Create
 
-	* Creation of the database is bootstrapped through an [sql file](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/bamazonSeed.sql#L1) which must be run out-of-band.
+	* Creation of the database is bootstrapped through an [sql file](https://github.com/zenglenn42/utbc2019-hw-12-tinyson/blob/fad2ba639bd4adf04808fa0f8d79f455166c13da/tinysonSeed.sql#L1) which must be run out-of-band.
   ```
-      % mysql -u root < bamazonSeed.sql
+      % mysql -u root < tinysonSeed.sql
   ```
 
 * Read
@@ -62,7 +61,7 @@ Here's a sampling of the mysql fu that enables our app:
 * inquirer.js
 
 
-## Here are the products Bamazon knows about ...
+## Here are the products Tinyson knows about ...
 
 ```
 mysql> select * from products;
@@ -86,9 +85,9 @@ mysql> select * from products;
 ![alt](docs/img/computer-keyboard-contemporary-electronics-257881.jpg)
 
 ```
-% node bamazonCustomer.js
+% node tinysonCustomer.js
 
-Welcome to Bamazon, your complete source for some things.
+Welcome to Tinyson, your complete source for some things.
 
 ┌─────────┬─────────┬─────────────────┬─────────────────┬───────┬────────────────┐
 │ (index) │ item_id │  product_name   │ department_name │ price │ stock_quantity │
@@ -179,13 +178,12 @@ Please try again.
 │    8    │    9    │     'Earth'     │    'planet'     │  100  │       1        │
 └─────────┴─────────┴─────────────────┴─────────────────┴───────┴────────────────┘
 ? Enter the item_id of the product you wish to buy (or Q to quit):  q
-Thank you for visiting Bamazon
+Thank you for visiting Tinyson
 
 ```
 
 Of course the beauty of this application isn't in the frontend .... it's in the backend where we get intimations of how to connect to a database and perform some basic queries and updates.  In later assignments, we'll add an Express server and wrapper our database interactions in an Object Relational Mapping (ORM) like Sequelize where we can use Promise-based idioms to improve the readability of our code.
 
-![alt](docs/img/database.png)
 
 ## Designer's Blog
 
@@ -204,7 +202,7 @@ You process a lot of stuff because my thread is not camped out in the foreground
 
 But you make my code difficult to read ... since my program logic snakes across callbacks.
 
-For the Bamazon application, the pseudo code is simple enough:
+For the Tinyson application, the pseudo code is simple enough:
 
 ### Simple Pseudo Code 🙂
 ```
@@ -233,7 +231,7 @@ disjoint way.
 
 ```
 function main() {
-    console.log("Welcome to Bamazon")
+    console.log("Welcome to Tinyson")
     listProducts()
 }
 ```
@@ -281,10 +279,10 @@ programming model often requires.
 
 I'm using the 'waterfall' async model in which the results of the upstream callback are passed as parameters to the next downstream callback.  Plus I'm throwing in some object oriented decomposition since it's just the right thing to do.
 
-The overall Bamazon customer class is now looing like this ...
+The overall Tinyson customer class is now looing like this ...
 
 ```
-module.exports = class BamazonCustomer {
+module.exports = class TinysonCustomer {
 
   constructor(dbConnectionConfig, selectProductPrompt, selectQuantityPrompt) {
     this.techSupportNumber = "1 800 867-5309"
@@ -302,7 +300,7 @@ module.exports = class BamazonCustomer {
           `Please call technical support at ${this.techSupportNumber} to get a status update.`
           );
         } else {
-        const welcomeMsg = "Welcome to Bamazon, your complete source for some things.";
+        const welcomeMsg = "Welcome to Tinyson, your complete source for some things.";
         console.log(`\n${welcomeMsg}`);
         this._startShopping(this._stopShoppingCB.bind(this));
       }
@@ -329,20 +327,20 @@ module.exports = class BamazonCustomer {
 The driver to kick off a shopping sequence is simple with our OO decomposition:
 
 ```
-var BamazonCustomer = require("./BamazonCustomer-async.js")
+var TinysonCustomer = require("./TinysonCustomer-async.js")
 
 // Configure mysql server connection.
 const dbConfig = {
   host: "localhost",
   port: 3306,
-  database: "bamazon_db",
+  database: "tinyson_db",
   user: "root"
 }
 
 // Define inquirer prompt objects here... (exerpted)
 
-// Instantiate a Bamazon session and start shopping.
-var customer = new BamazonCustomer(
+// Instantiate a Tinyson session and start shopping.
+var customer = new TinysonCustomer(
                     dbConfig, 
                     selectProductPrompt, 
                     selectQuantityPrompt
@@ -364,13 +362,13 @@ I guess async is cool.  I'll play with promises in other code to see what I like
 ### i18n
 
 With a bit more effort, we could separate out the messages and error conditions from the
-BamazonCustomer class entirely to facilitate internationalization.
+TinysonCustomer class entirely to facilitate internationalization.
 
 ### what's with the _method names in the class?
 
 The OO work was fun but I am missing the notion of private or protected methods in JS.  These are internal methods (used by the class itself) that we /don't/ want to expose to users of our class.
 
-I've adopted the convention of prepending an underbar to my [private methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L30) (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
+I've adopted the convention of prepending an underbar to my [private methods](https://github.com/zenglenn42/utbc2019-hw-12-tinyson/blob/4f33a3820b47b0330e3492b1161deabb073790c3/TinysonCustomer-async.js#L30) (i.e., _privateMethod() {..}) as a clue to consumers of my class not to use those.
 
 ### wildcarding in SQL strings
 
@@ -407,4 +405,4 @@ Error handling fascinates me.  It's a great benchmark by which to measure the so
   * Do the messages spell out the implications of the error?
   * Is there any remedial or actionable advice given?
 
-For this application, I added a couple [helper methods](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L57) for reporting and possibly exiting on an error condition.  I also took a page from Marc's thinking with [annunciating errors](https://github.com/zenglenn42/utbc2019-hw-12-bamazon/blob/4f33a3820b47b0330e3492b1161deabb073790c3/BamazonCustomer-async.js#L44) in callbacks since using throw is a bit problematic because the callback executes in it's own context and you won't be able to catch the error from your mainline logic.
+For this application, I added a couple [helper methods](https://github.com/zenglenn42/utbc2019-hw-12-tinyson/blob/4f33a3820b47b0330e3492b1161deabb073790c3/TinysonCustomer-async.js#L57) for reporting and possibly exiting on an error condition.  I also took a page from Marc's thinking with [annunciating errors](https://github.com/zenglenn42/utbc2019-hw-12-tinyson/blob/4f33a3820b47b0330e3492b1161deabb073790c3/TinysonCustomer-async.js#L44) in callbacks since using throw is a bit problematic because the callback executes in it's own context and you won't be able to catch the error from your mainline logic.

@@ -1,10 +1,10 @@
-var BamazonCustomer = require("./BamazonCustomer-async.js")
+var TinysonCustomer = require("./TinysonCustomer-async.js")
 
 // Configure mysql server connection.
 const dbConfig = {
   host: "localhost",
   port: 3306,
-  database: "bamazon_db",
+  database: "tinyson_db",
   user: "root",
   password: ""
 }
@@ -39,6 +39,6 @@ const selectQuantityPrompt = [{
               }
 }];
 
-// Instantiate a Bamazon session and start shopping.
-var customer = new BamazonCustomer(dbConfig, selectProductPrompt, selectQuantityPrompt);
+// Instantiate a Tinyson session and start shopping.
+var customer = new TinysonCustomer(dbConfig, selectProductPrompt, selectQuantityPrompt);
 customer.shop();
